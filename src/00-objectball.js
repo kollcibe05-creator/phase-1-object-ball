@@ -1,7 +1,8 @@
 function gameObject() {
+   return {
     home: {
         teamName: "Brookyln Nets",
-        colors: [Black, White],
+        colors: ["Black", "White"],
         players: {
             'Alan Anderson': {
                Number: 0,
@@ -58,7 +59,7 @@ function gameObject() {
     },
     away: {
         teamName: "Charlotte Hormets",
-        colors: [Turquoise, Purple],
+        colors: ["Turquoise", "Purple"],
         players: {
             'Jeff Adrien': {
                Number: 4,
@@ -114,5 +115,8 @@ function gameObject() {
         }
 
     }
+   }
 
 }
+
+
