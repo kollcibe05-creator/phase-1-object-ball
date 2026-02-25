@@ -120,3 +120,121 @@ function gameObject() {
 }
 
 
+const playerSearchByName = (name) => {
+   return allPlayersWithNames().find ( player => player.name === name)
+}
+
+
+function allPlayersWithNames () {
+const {home, away} = gameObject()
+
+const allPlayersWithNames = [
+   ...Object.keys(home.players).map( name => ({name, ...home.players[name]})), 
+   ...Object.keys(away.players).map( name => ({name, ...away.players[name]})), 
+
+]
+return allPlayersWithNames
+
+}
+
+
+
+/////////////////////////////////////////////////////
+
+
+
+function numPointsScored (name) {
+   return playerSearchByName(name).Points
+}
+
+console.log(numPointsScored("Alan Anderson"))
+
+
+function shoeSize (name) {
+   return playerSearchByName(name).Shoe
+}
+
+
+function teamColors (teamName) {
+   const game = gameObject()
+
+   const team = Object.values(game).find (team => team.teamName === teamName)
+
+   return team ? team.colors : []
+}
+
+
+
+function teamNames () {
+   const game  = gameObject()
+
+   const names = Object.values(game).map(t => t.teamName)
+
+
+    return names
+}
+
+
+
+function playerNumbers (teamName) {
+
+
+   const game = gameObject()
+
+   const team = Object.values(game).find(t => t.teamName === teamName)
+
+   return team ? Object.values(team.players).map(p => p.Number) : []
+
+   
+
+}
+
+
+function playerStats (name) {
+   return playerSearchByName(name)
+}
+
+
+function bigShoeRebounds () {
+
+   const sorted = allPlayersWithNames().sort((a, b) => b.Shoe - a.Shoe)
+
+   return sorted[0].Rebounds 
+
+}
+
+
+function mostPointsScored () {
+   const sorted = allPlayersWithNames().sort( (a, b) => b.Points - a.Points)
+
+   return sorted[0].name
+}
+
+
+
+
+function playerWithLongestName () {
+   const sorted = allPlayersWithNames().sort((a, b) => b.name.length - a.name.length)
+   
+   return sorted[0]
+}
+
+function doesLongNameStealATon () {
+   const player = playerWithLongestName().name
+   const sorted = allPlayersWithNames().sort ( (a, b) => b.Steals - a.Steals )
+   
+   return sorted[0].name === player
+}
+
+
+function winningTeam () {
+   const {home, away} = gameObject()
+
+   const homePoints = Object.values(home.players).reduce( (sum,player) => sum + player.Points, 0)
+
+   const awayPoints = Object.values(away.players).reduce( (sum,player) => sum + player.Points, 0)
+
+   
+   return awayPoints > homePoints ? away.teamName : home.teamName
+}
+
