@@ -140,4 +140,10 @@ const getTopPlayerBy = (stat) => allPlayersWithNames().reduce ((prev, curr) => (
 const playerWithLongestName = () => allPlayersWithNames().reduce((a, b) => (b.name.length > a.name.length) ? b : a)
 
 
-console.log(playerWithLongestName())
+
+console.table(gameObject())
+
+
+
+
+
