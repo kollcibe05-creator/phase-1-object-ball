@@ -1,6 +1,7 @@
 {
   "name": "phase-1-object-ball",
   "version": "1.0.0",
+  "type": "module",
   "description": "Object Ball Lab for Flatiron School",
   "main": "index.js",
   "directories": {
